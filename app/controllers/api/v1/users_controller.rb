@@ -16,14 +16,7 @@ class Api::V1::UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save!
-      @response = { id: @user.id, 
-                    email: @user.email, 
-                    created_at: @user.created_at, 
-                    updated_at: @user.updated_at, 
-                    name: @user.name, 
-                    authentication_token: @user.authentication_token
-                  }
-      render json: @response, status: :created
+      render json: @user.as_json(only: [:id, :email]), status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end

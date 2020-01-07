@@ -1,6 +1,5 @@
 class Api::V1::TodosController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy]
-  before_action :require_authorization!, only: [:show, :update, :destroy]
   # GET /api/v1/todos
   def index
     @todos = Todo.all

@@ -12,6 +12,7 @@ gem 'rack-cors'
 gem 'rack-attack'
 # Authentication
 gem 'devise'
+gem 'jwt'
 gem 'simple_token_authentication', '~> 1.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
