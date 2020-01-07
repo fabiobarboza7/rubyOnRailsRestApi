@@ -15,7 +15,7 @@ class Api::V1::TodosController < ApplicationController
   # POST /api/v1/todos
   def create
     @todo = Todo.new(todo_params)
-
+    
     if @todo.save
       render json: @todo, status: :created
     else
