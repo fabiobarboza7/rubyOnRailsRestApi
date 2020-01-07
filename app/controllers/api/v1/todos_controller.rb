@@ -3,7 +3,7 @@ class Api::V1::TodosController < ApplicationController
   before_action :require_authorization!, only: [:show, :update, :destroy]
   # GET /api/v1/todos
   def index
-    @todos = current_user.contacts.todos
+    @todos = Todo.all
     render json: @todos
   end
 
@@ -49,7 +49,7 @@ class Api::V1::TodosController < ApplicationController
   end
 
   def require_authorization!
-    unless current_user == @contact.user
+    unless current_user == @todo.user
       render json: {}, status: :forbidden
     end
   end
