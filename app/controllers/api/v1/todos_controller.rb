@@ -1,9 +1,9 @@
 class Api::V1::TodosController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy]
-
+  before_action :require_authorization!, only: [:show, :update, :destroy]
   # GET /api/v1/todos
   def index
-    @todos = Todo.all
+    @todos = current_user.contacts.todos
     render json: @todos
   end
 
@@ -14,7 +14,7 @@ class Api::V1::TodosController < ApplicationController
 
   # POST /api/v1/todos
   def create
-    @todo = Todo.new(todo_params)
+    @todo = Todo.new(todo_params.merge(user: current_user))
     
     if @todo.save
       render json: @todo, status: :created
@@ -46,6 +46,12 @@ class Api::V1::TodosController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def todo_params
     params.require(:todo).permit(:title, :is_completed)
+  end
+
+  def require_authorization!
+    unless current_user == @contact.user
+      render json: {}, status: :forbidden
+    end
   end
 
 end

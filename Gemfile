@@ -10,6 +10,9 @@ gem 'pg', '>= 0.18', '< 2.0'
 # setup cors
 gem 'rack-cors'
 gem 'rack-attack'
+# Authentication
+gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
