@@ -15,7 +15,7 @@ gem 'devise'
 gem 'jwt'
 gem 'simple_token_authentication', '~> 1.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
